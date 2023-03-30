@@ -10,7 +10,6 @@ packaging==23.0
 parso==0.8.3
 pluggy==1.0.0
 prompt-toolkit==3.0.38
-ptpython==3.0.23
 Pygments==2.14.0
 pytest==7.2.2
 pytest-django==4.5.2
