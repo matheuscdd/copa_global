@@ -1,5 +1,5 @@
-from .exceptions import InvalidYearCupError, NegativeTitlesError, ImpossibleTitlesError
-from .constrains import TITLES, FIRST_CUP
+from teams.exceptions import InvalidYearCupError, NegativeTitlesError, ImpossibleTitlesError
+from constrains import TITLES, FIRST_CUP
 
 def data_processing(team: dict):
     year, titles = int(team[FIRST_CUP][:4]), team[TITLES]
