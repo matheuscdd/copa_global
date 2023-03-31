@@ -10,15 +10,14 @@ from .exceptions import InvalidYearCupError, ImpossibleTitlesError, NegativeTitl
 class TeamViewAll(APIView):
     def post(self, request):
         team = request.data
- 
         try:
             data_processing(dict(first_cup=team[FIRST_CUP], titles=team[TITLES]))
         except InvalidYearCupError as error:
-            return Response(dict(error=error.message))
+            return Response(dict(error=error.message), status.HTTP_400_BAD_REQUEST)
         except ImpossibleTitlesError as error:
-            return Response(dict(error=error.message))
+            return Response(dict(error=error.message), status.HTTP_400_BAD_REQUEST)
         except NegativeTitlesError as error:
-            return Response(dict(error=error.message))
+            return Response(dict(error=error.message), status.HTTP_400_BAD_REQUEST)
 
         team = Team.objects.create(**team)
         return Response(model_to_dict(team), status.HTTP_201_CREATED)
